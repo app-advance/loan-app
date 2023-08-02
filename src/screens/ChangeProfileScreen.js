@@ -67,7 +67,11 @@ const ChangeProfileScreen = (props) => {
           {loading ? (
             <Spinner />
           ) : (
-            <Button title="Өөрчлөх" onPress={handleSubmit} color={primary_color} />
+            <Button
+              title="Өөрчлөх"
+              onPress={handleSubmit}
+              color={primary_color}
+            />
           )}
         </View>
       </View>

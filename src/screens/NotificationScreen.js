@@ -13,7 +13,7 @@ const NotificationScreen = (props) => {
   return (
     <View>
       <View>
-        <ScreenHeader title="Гүйлгээнүүд" navigation={props.navigation} />
+        <ScreenHeader title="Гүйлгээний түүх" navigation={props.navigation} />
       </View>
       <ScrollView
         style={{
@@ -26,6 +26,10 @@ const NotificationScreen = (props) => {
       >
         {transactions !== undefined ? (
           transactions?.map((t, index) => {
+            let userDateTime = new Date(
+              t.txn_date + 8 * 60 * 60 * 1000
+            ).toJSON();
+
             return (
               <View
                 style={{
@@ -45,7 +49,10 @@ const NotificationScreen = (props) => {
                   }}
                 >
                   <Text style={{ fontWeight: 700, color: "#999" }}>
-                    {t.txn_date}
+                    {userDateTime &&
+                      userDateTime.slice(0, 10) +
+                        " " +
+                        userDateTime.slice(11, 19)}
                   </Text>
                   <Text style={{ fontWeight: 700, color: "#999" }}>
                     {t.txn_type === "Approve"
@@ -70,8 +77,9 @@ const NotificationScreen = (props) => {
                 >
                   {thoud(t.txn_amount)} MNT
                 </Text>
-                <Text style={{ textAlign: "center" }}>
-                  Зээлийн дугаар: {t.unique}
+                <Text style={{ textAlign: "center", color: primary_color }}>
+                  Зээлийн дугаар:&nbsp;&nbsp;&nbsp;
+                  <Text style={{ fontWeight: 700 }}>{t.unique}</Text>
                 </Text>
               </View>
             );

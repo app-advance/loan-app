@@ -1,12 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { primary_color } from "../constants/colors";
 
 const BusinessTitle = (props) => {
   return (
     <View style={css.container}>
-      <FontAwesome5 name="chevron-right" size={15} color="darkblue" />
+      <FontAwesome5 name="chevron-right" size={15} color="white" />
       <Text style={css.title}>{props.title}</Text>
     </View>
   );
@@ -24,8 +23,8 @@ const css = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    marginLeft: 5,
-    color: primary_color,
+    marginLeft: 10,
+    color: "white",
     fontSize: 16,
     fontWeight: "700",
   },

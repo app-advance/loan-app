@@ -1,7 +1,7 @@
 import { Alert, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import thoud from "thousand_separator_number";
-import { primary_color } from "../constants/colors";
+import { primary_color, secondary_color } from "../constants/colors";
 
 const UserLoanCard = (props) => {
   const loan = props.loan;
@@ -84,15 +84,13 @@ const UserLoanCard = (props) => {
       <View style={css.cardHeader}>
         <View style={css.cardHeadFlex}>
           <View>
-            <Text style={{ color: "#999", fontSize: 13 }}>
-              Зээлийн үлдэгдлийн хэмжээ
-            </Text>
+            <Text style={css.subtitle}>Зээлийн үлдэгдэл</Text>
             <Text
               style={{
-                color: "#333",
+                color: primary_color,
                 fontSize: 40,
                 fontWeight: "bold",
-                marginVertical: 3,
+                // marginVertical: 3,
               }}
             >
               {thoud(txnAmount)}
@@ -100,14 +98,16 @@ const UserLoanCard = (props) => {
           </View>
           {loan.loan_status !== "gDhqtQGFYVmv5LR4C5R4" && (
             <View>
-              <Text style={{ color: "#999", fontSize: 13 }}>Үлдсэн хоног</Text>
-              {loanDate?.remain_day > 7 ? (
-                <Text style={{ ...css.remainDay }}>{loanDate?.remain_day}</Text>
-              ) : (
-                <Text style={{ ...css.remainDay, color: "red" }}>
-                  {loanDate?.remain_day}
-                </Text>
-              )}
+              <Text style={css.subtitle}>Үлдсэн хоног</Text>
+              <Text
+                style={{
+                  ...css.remainDay,
+                  color: "#555",
+                  fontWeight: 700,
+                }}
+              >
+                {loanDate?.remain_day}
+              </Text>
             </View>
           )}
         </View>
@@ -117,6 +117,7 @@ const UserLoanCard = (props) => {
               height: 38,
               justifyContent: "center",
               alignItems: "center",
+              // paddingBottom: 16,
             }}
           >
             <Text>Түр хүлээнэ үү.</Text>
@@ -129,13 +130,15 @@ const UserLoanCard = (props) => {
               alignItems: "center",
             }}
           >
-            <View>
+            {/* <View>
               <Text>Зээл авсан огноо</Text>
               <Text>{loanDate?.start_date?.slice(0, 10)}</Text>
-            </View>
-            <View>
-              <Text>Зээл дуусах хугацаа</Text>
-              <Text>{loanDate?.end_date?.slice(0, 10)}</Text>
+            </View> */}
+            <View style={{ marginVertical: 10 }}>
+              <Text style={css.subtitle}>Зээл дуусах хугацаа</Text>
+              <Text style={{ fontSize: 20, color: "#999" }}>
+                {loanDate?.end_date?.slice(0, 10)}
+              </Text>
             </View>
           </View>
         )}
@@ -143,11 +146,26 @@ const UserLoanCard = (props) => {
       {loan.loan_status !== "gDhqtQGFYVmv5LR4C5R4" && (
         <View style={css.cardFooter}>
           <Text style={css.footerItemLeft} onPress={handleLoanPayment}>
-            Зээл төлөх, хаах
+            Зээл төлөх
           </Text>
-          <Text style={css.footerItemRight} onPress={handleLoanStretchment}>
-            Хугацаа сунгах
-          </Text>
+          {loanDate?.remain_day > 7 ? (
+            <Text
+              style={{ ...css.footerItemRight, backgroundColor: "orange" }}
+              onPress={handleLoanStretchment}
+            >
+              Хугацаа сунгах
+            </Text>
+          ) : (
+            <Text
+              style={{
+                ...css.footerItemRight,
+                backgroundColor: secondary_color,
+              }}
+              onPress={handleLoanStretchment}
+            >
+              Хугацаа сунгах
+            </Text>
+          )}
         </View>
       )}
     </View>
@@ -159,20 +177,22 @@ export default UserLoanCard;
 const css = StyleSheet.create({
   container: {
     marginHorizontal: 10,
-    marginBottom: 15,
+    marginTop: 20,
     width: "100%",
     alignSelf: "center",
   },
   cardHeader: {
-    backgroundColor: "white",
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    paddingHorizontal: 30,
+    // paddingVertical: 10,
   },
   cardHeadFlex: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  subtitle: {
+    color: "#999",
+    fontSize: 14,
+    fontWeight: 700,
   },
   remainDay: {
     fontSize: 30,
@@ -180,28 +200,26 @@ const css = StyleSheet.create({
     textAlign: "right",
   },
   cardFooter: {
+    marginHorizontal: 10,
     flexDirection: "row",
     height: 40,
+    justifyContent: "flex-end",
   },
   footerItemLeft: {
-    backgroundColor: primary_color,
-    flex: 1,
     textAlign: "center",
     verticalAlign: "middle",
-    color: "white",
+    color: "#666",
     fontSize: 16,
-    fontWeight: "semibold",
-    borderBottomLeftRadius: 10,
+    fontWeight: 700,
+    paddingHorizontal: 10,
   },
   footerItemRight: {
-    borderColor: primary_color,
-    borderWidth: 1,
-    flex: 1,
     textAlign: "center",
     verticalAlign: "middle",
-    color: primary_color,
     fontSize: 16,
-    fontWeight: "semibold",
-    borderBottomRightRadius: 10,
+    color: "white",
+    fontWeight: 700,
+    paddingHorizontal: 15,
+    borderRadius: 50,
   },
 });

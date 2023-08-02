@@ -12,7 +12,7 @@ import ScreenHeader from "../components/ScreenHeader";
 import useParameter from "../hooks/useParameter";
 import MyLabel from "../components/MyLabel";
 import Spinner from "../components/Spinner";
-import { primary_color } from "../constants/colors";
+import { primary_color, secondary_color } from "../constants/colors";
 
 const ProductDetailScreen = (props) => {
   const parameters = useParameter("SrWlRTEJbhSnzG5zsntZ");
@@ -97,7 +97,11 @@ const ProductDetailScreen = (props) => {
             <Text style={css.text}>{product.extension} хоног</Text>
           </View>
           <View style={css.items}>
-            <Button title="Зээл авах" onPress={handleLoanReceive} color={primary_color} />
+            <Button
+              title="Зээл авах"
+              onPress={handleLoanReceive}
+              color={primary_color}
+            />
           </View>
         </ScrollView>
       ) : (

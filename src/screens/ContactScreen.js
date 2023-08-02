@@ -50,7 +50,7 @@ const ContactScreen = (props) => {
           paddingHorizontal: 20,
         }}
       >
-        <Text style={{ textAlign: "center" }}>
+        <Text style={{ textAlign: "center", color: primary_color }}>
           Та бүтээгдэхүүн, үйлчилгээтэй холбоотой дэлгэрэнгүй мэдээлэл авахыг
           хүсвэл доорх дугаараар
         </Text>
@@ -66,7 +66,7 @@ const ContactScreen = (props) => {
         >
           {phoneNumber !== undefined && contact?.phoneNumber}
         </Text>
-        <Text style={{ textAlign: "center" }}>
+        <Text style={{ textAlign: "center", color: primary_color }}>
           эсвэл доорх имэйлээр холбогдоно уу.
         </Text>
         <Text

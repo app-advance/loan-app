@@ -3,6 +3,7 @@ import React from "react";
 import ScreenHeader from "../components/ScreenHeader";
 import MyLabel from "../components/MyLabel";
 import useUser from "../hooks/useUser";
+import { primary_color } from "../constants/colors";
 
 const ProfileScreen = (props) => {
   const userDetail = useUser();
@@ -94,9 +95,9 @@ const css = StyleSheet.create({
     marginTop: 50,
   },
   text: {
-    paddingLeft: 20,
-    paddingTop: 10,
-    color: "#666",
+    fontSize: 18,
+    fontWeight: "semibold",
+    color: primary_color,
   },
   items: {
     marginBottom: 20,

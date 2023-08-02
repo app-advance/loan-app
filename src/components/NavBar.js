@@ -2,7 +2,6 @@ import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, StyleSheet, Text, Image } from "react-native";
 import Spinner from "../components/Spinner";
-import { primary_color } from "../constants/colors";
 
 const NavBar = (props) => {
   return (
@@ -26,14 +25,17 @@ const NavBar = (props) => {
             height: "100%",
             verticalAlign: "middle",
             color: "white",
-            fontWeight: "semibold",
           }}
         >
           {props.userDetail !== undefined ? (
-            "Сайн уу, " +
-            props.userDetail[0]?.firstname +
-            "." +
-            props.userDetail[0]?.lastname[0]
+            <View>
+              <Text style={{ color: "white" }}>Сайн уу,</Text>
+              <Text style={{ fontWeight: "bold", color: "white" }}>
+                {props.userDetail[0]?.firstname +
+                  "." +
+                  props.userDetail[0]?.lastname[0]}
+              </Text>
+            </View>
           ) : (
             <Spinner />
           )}
@@ -67,9 +69,9 @@ export default NavBar;
 
 const css = StyleSheet.create({
   header: {
+    marginHorizontal: 10,
     height: 50,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: primary_color,
   },
 });

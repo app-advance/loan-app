@@ -1,19 +1,14 @@
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  View,
-  Button,
-  Clipboard,
-} from "react-native";
+import { StyleSheet, ScrollView, Text, View, Clipboard } from "react-native";
 import thoud from "thousand_separator_number";
 import React, { useState } from "react";
 import ScreenHeader from "../components/ScreenHeader";
+import MyTouchableButton from "../components/MyTouchableButton";
 import MyLabel from "../components/MyLabel";
 import useLoan from "../hooks/useLoan";
 import { useEmailSend } from "../hooks/useEmailSend";
 import Spinner from "../components/Spinner";
 import { primary_color } from "../constants/colors";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const LoanReceiveScreenP2 = (props) => {
   const [loading, setLoading] = useState(false);
@@ -72,11 +67,15 @@ const LoanReceiveScreenP2 = (props) => {
         </Text>
         <View style={css.items}>
           <MyLabel label="Бүтээгдэхүүний нэр" />
-          <Text style={css.text}>{product.segment}</Text>
+          <Text style={{ ...css.text, fontWeight: "bold" }}>
+            {product.segment}
+          </Text>
         </View>
-        <View style={css.items}>
+        <View style={{ ...css.items, marginBottom: 40 }}>
           <MyLabel label="Зээлийн хэмжээ" />
-          <Text style={css.text}>{thoud(loan.loan)} төг</Text>
+          <Text style={{ ...css.text, fontWeight: "bold" }}>
+            {thoud(loan.loan)} төг
+          </Text>
         </View>
         <View style={css.items}>
           <MyLabel label="Шимтгэл | Гүйлгээний дүн" />
@@ -85,10 +84,11 @@ const LoanReceiveScreenP2 = (props) => {
           >
             <Text style={css.text}>{thoud(loan.fee)} төг</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard(loan.fee)}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard(loan.fee)}
               />
             </View>
           </View>
@@ -100,10 +100,11 @@ const LoanReceiveScreenP2 = (props) => {
           >
             <Text style={css.text}>{bank_account}</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard(bank_account)}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard(bank_account)}
               />
             </View>
           </View>
@@ -115,10 +116,11 @@ const LoanReceiveScreenP2 = (props) => {
           >
             <Text style={css.text}>Эдванс Кредит ББСБ</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard("Эдванс Кредит ББСБ")}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard("Эдванс Кредит ББСБ")}
               />
             </View>
           </View>
@@ -130,10 +132,11 @@ const LoanReceiveScreenP2 = (props) => {
           >
             <Text style={css.text}>{uniqueID}</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard(uniqueID)}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard(uniqueID)}
               />
             </View>
           </View>
@@ -147,14 +150,13 @@ const LoanReceiveScreenP2 = (props) => {
             дээрээ бичнэ үү!
           </Text>
         </View>
-        <View style={{ ...css.items, marginTop: 20 }}>
+        <View style={{ ...css.items, marginTop: 35 }}>
           {loading ? (
             <Spinner />
           ) : (
-            <Button
-              title="Хүсэлт илгээх"
+            <MyTouchableButton
               onPress={sendLoanRequest}
-              color={primary_color}
+              title="Хүсэлт илгээх"
             />
           )}
         </View>
@@ -172,12 +174,12 @@ const css = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "semibold",
     shadowColor: "gray",
     color: primary_color,
-    marginLeft: 20,
+    // marginLeft: 20,
   },
   items: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
 });

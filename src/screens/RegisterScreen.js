@@ -2,17 +2,10 @@ import React, { useState } from "react";
 import { app, database } from "../../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
-import {
-  ScrollView,
-  Text,
-  Button,
-  StyleSheet,
-  View,
-  Alert,
-  Image,
-} from "react-native";
+import { ScrollView, StyleSheet, View, Alert, Image } from "react-native";
 import MyInput from "../components/MyInput";
 import MyGreyButton from "../components/MyGreyButton";
+import MySolidButton from "../components/MySolidButton";
 import Spinner from "../components/Spinner";
 import { primary_color } from "../constants/colors";
 
@@ -106,10 +99,9 @@ export default RegisterScreen = (props) => {
     <View style={css.container}>
       <View style={css.titleArea}>
         <Image
-          source={require("../../assets/white-logo.png")}
+          source={require("../../assets/splash-logo.png")}
           style={css.logo}
         />
-        <Text style={css.title}>Бүртгүүлэх</Text>
       </View>
       <ScrollView style={css.inputArea}>
         <View style={{ ...css.items, marginTop: 30 }}>
@@ -193,11 +185,7 @@ export default RegisterScreen = (props) => {
           {loading ? (
             <Spinner />
           ) : (
-            <Button
-              title="Бүртгүүлэх"
-              onPress={handleSubmit}
-              color={primary_color}
-            />
+            <MySolidButton title="Бүртгүүлэх" onPress={handleSubmit} />
           )}
         </View>
         <View style={{ marginVertical: 50, alignSelf: "center" }}>
@@ -222,7 +210,10 @@ const css = StyleSheet.create({
     height: "31%",
     backgroundColor: primary_color,
     width: "100%",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
   },
   title: {
     color: "white",
@@ -232,21 +223,21 @@ const css = StyleSheet.create({
     left: 20,
   },
   logo: {
-    width: 50,
-    height: 50,
-    alignSelf: "flex-end",
-    right: 30,
-    top: 40,
+    width: 200,
+    height: 200,
+    // alignSelf: "flex-end",
+    // right: 30,
+    // top: 40,
   },
   inputArea: {
     height: "75%",
-    backgroundColor: "white",
+    // backgroundColor: "white",
     width: "100%",
     paddingHorizontal: 30,
   },
   button: {
     marginTop: 20,
-    width: "50%",
+    width: "70%",
     alignSelf: "center",
   },
   items: {

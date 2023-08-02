@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { app } from "../../firebase";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Alert,
-  Switch,
-  Image,
-} from "react-native";
+import { View, Text, StyleSheet, Alert, Switch, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import MyInput from "../components/MyInput";
 import MyOutlineButton from "../components/MyOutlineButton";
 import MyGreyButton from "../components/MyGreyButton";
+import MySolidButton from "../components/MySolidButton";
 import Spinner from "../components/Spinner";
 import { primary_color } from "../constants/colors";
 
@@ -92,10 +85,10 @@ export default LoginScreen = (props) => {
     <View style={css.container}>
       <View style={css.titleArea}>
         <Image
-          source={require("../../assets/white-logo.png")}
+          source={require("../../assets/splash-logo.png")}
           style={css.logo}
         />
-        <Text style={css.title}>Нэвтрэх</Text>
+        {/* <Text style={css.title}>Нэвтрэх</Text> */}
       </View>
       <View style={css.inputArea}>
         <View style={{ marginBottom: 20 }}>
@@ -120,6 +113,13 @@ export default LoginScreen = (props) => {
             secureTextEntry={true}
           />
         </View>
+        <View style={{ marginTop: 10, marginBottom: 10, alignSelf: "center" }}>
+          <MyGreyButton
+            title="Нууц үгээ мартсан уу"
+            navigation={handleNavigation}
+            navigate="PasswordResetScreen"
+          />
+        </View>
         <View
           style={{
             marginBottom: 40,
@@ -136,29 +136,18 @@ export default LoginScreen = (props) => {
           />
           <Text>Нэвтрэх нэр сануулах</Text>
         </View>
-        <View style={{ width: "50%", alignSelf: "center", marginTop: 20 }}>
+        <View style={{ width: "70%", alignSelf: "center", marginTop: 20 }}>
           {loading ? (
             <Spinner />
           ) : (
-            <Button
-              title="Нэвтрэх"
-              onPress={handleSubmit}
-              color={primary_color}
-            />
+            <MySolidButton title="Нэвтрэх" onPress={handleSubmit} />
           )}
         </View>
-        <View style={{ marginTop: 40, width: "50%", alignSelf: "center" }}>
+        <View style={{ marginTop: 10, width: "70%", alignSelf: "center" }}>
           <MyOutlineButton
             title="Бүртгүүлэх"
             navigation={handleNavigation}
             navigate="RegisterScreen"
-          />
-        </View>
-        <View style={{ marginTop: 50, alignSelf: "center" }}>
-          <MyGreyButton
-            title="Нууц үг сэргээх"
-            navigation={handleNavigation}
-            navigate="PasswordResetScreen"
           />
         </View>
       </View>
@@ -173,10 +162,13 @@ const css = StyleSheet.create({
     alignItems: "center",
   },
   titleArea: {
-    flex: 1,
+    height: "31%",
     backgroundColor: primary_color,
     width: "100%",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
   },
   title: {
     color: "white",
@@ -186,16 +178,12 @@ const css = StyleSheet.create({
     left: 20,
   },
   logo: {
-    width: 50,
-    height: 50,
-    alignSelf: "flex-end",
-    right: 30,
-    top: 40,
+    width: 200,
+    height: 200,
   },
   inputArea: {
     paddingTop: 50,
     flex: 2,
-    backgroundColor: "white",
     width: "100%",
     paddingHorizontal: 30,
     justifyContent: "flex-start",

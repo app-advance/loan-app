@@ -7,6 +7,7 @@ import MyInput from "../components/MyInput";
 import MyLabel from "../components/MyLabel";
 import Spinner from "../components/Spinner";
 import { primary_color } from "../constants/colors";
+import MyTouchableButton from "../components/MyTouchableButton";
 
 const ChangePassword = (props) => {
   const [password1, setPassword1] = useState(null);
@@ -82,7 +83,7 @@ const ChangePassword = (props) => {
           {loading ? (
             <Spinner />
           ) : (
-            <Button title="Өөрчлөх" onPress={handleSubmit} color={primary_color} />
+            <MyTouchableButton title="Өөрчлөх" onPress={handleSubmit} />
           )}
         </View>
       </View>
@@ -99,7 +100,7 @@ const css = StyleSheet.create({
   },
   button: {
     marginTop: 50,
-    width: "50%",
+    width: "80%",
     alignSelf: "center",
   },
   items: {

@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, Alert } from "react-native";
+import { getAuth, signOut } from "firebase/auth";
+import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { primary_color } from "../constants/colors";
 
@@ -8,8 +9,8 @@ const ScreenHeader = (props) => {
     <View style={css.container}>
       <AntDesign
         name="left"
-        size={25}
-        style={{ color: primary_color }}
+        size={30}
+        style={{ color: primary_color, fontWeight: "bold" }}
         onPress={() => props.navigation.goBack()}
       />
       <Text style={css.title}>{props.title}</Text>
@@ -29,12 +30,13 @@ const css = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: primary_color,
+    // borderBottomWidth: 1,
+    // borderBottomColor: primary_color,
   },
   title: {
     color: primary_color,
-    fontSize: 15,
-    fontWeight: "semibold",
+    width: "70%",
+    fontSize: 25,
+    fontWeight: "bold",
   },
 });

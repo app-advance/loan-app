@@ -1,8 +1,9 @@
-import { View, Text, Button, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, Image } from "react-native";
 import React, { useState } from "react";
 import { app } from "../../firebase";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import MyInput from "../components/MyInput";
+import MySolidButton from "../components/MySolidButton";
 import MyGreyButton from "../components/MyGreyButton";
 import Spinner from "../components/Spinner";
 import { primary_color } from "../constants/colors";
@@ -45,7 +46,10 @@ const PasswordResetScreen = (props) => {
   return (
     <View style={css.container}>
       <View style={css.titleArea}>
-        <Text style={css.title}>Нууц үг сэргээх</Text>
+        <Image
+          source={require("../../assets/splash-logo.png")}
+          style={css.logo}
+        />
       </View>
       <View style={css.inputArea}>
         <View style={{ marginBottom: 20, marginTop: 50 }}>
@@ -59,15 +63,11 @@ const PasswordResetScreen = (props) => {
             secureTextEntry={false}
           />
         </View>
-        <View style={{ width: "50%", alignSelf: "center", marginTop: 20 }}>
+        <View style={{ width: "70%", alignSelf: "center", marginTop: 20 }}>
           {loading ? (
             <Spinner />
           ) : (
-            <Button
-              title="Илгээх"
-              onPress={handleSubmit}
-              color={primary_color}
-            />
+            <MySolidButton title="Илгээх" onPress={handleSubmit} />
           )}
         </View>
         <View style={{ marginTop: 50, alignSelf: "center" }}>
@@ -91,10 +91,17 @@ const css = StyleSheet.create({
     alignItems: "center",
   },
   titleArea: {
-    flex: 1,
+    height: "31%",
     backgroundColor: primary_color,
     width: "100%",
-    justifyContent: "flex-end",
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
+  },
+  logo: {
+    width: 200,
+    height: 200,
   },
   title: {
     color: "white",

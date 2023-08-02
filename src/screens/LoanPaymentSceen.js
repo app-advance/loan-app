@@ -8,11 +8,13 @@ import {
 } from "react-native";
 import React from "react";
 import thoud from "thousand_separator_number";
+import MyTouchableButton from "../components/MyTouchableButton";
 import ScreenHeader from "../components/ScreenHeader";
 import useParameter from "../hooks/useParameter";
 import { useEmailSend } from "../hooks/useEmailSend";
 import MyLabel from "../components/MyLabel";
 import { primary_color } from "../constants/colors";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const LoanPaymentSceen = (props) => {
   const loan = props.route.params.loan;
@@ -53,10 +55,11 @@ const LoanPaymentSceen = (props) => {
           >
             <Text style={css.text}>{thoud(txnAmount)} төг</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard(loan.user_loan_amount)}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard(loan.user_loan_amount)}
               />
             </View>
           </View>
@@ -70,10 +73,15 @@ const LoanPaymentSceen = (props) => {
               {parameter !== undefined && parameter[0].bank_account}
             </Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard("5070966496")}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() =>
+                  copyToClipboard(
+                    parameter !== undefined && parameter[0].bank_account
+                  )
+                }
               />
             </View>
           </View>
@@ -85,10 +93,11 @@ const LoanPaymentSceen = (props) => {
           >
             <Text style={css.text}>Эдванс Кредит ББСБ</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard("Эдванс Кредит ББСБ")}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard("Эдванс Кредит ББСБ")}
               />
             </View>
           </View>
@@ -100,16 +109,17 @@ const LoanPaymentSceen = (props) => {
           >
             <Text style={css.text}>{loan.unique}</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard(loan.unique)}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard(loan.unique)}
               />
             </View>
           </View>
         </View>
-        <View style={{ marginTop: 5 }}>
-          <Text style={{ textAlign: "center" }}>
+        <View style={{ marginTop: 30 }}>
+          <Text style={{ textAlign: "center", color: primary_color }}>
             Та зөвхөн дээрх дугаарыг{" "}
             <Text style={{ color: "red", fontWeight: "700" }}>
               гүйлгээний утга
@@ -117,11 +127,10 @@ const LoanPaymentSceen = (props) => {
             дээрээ бичнэ үү!
           </Text>
         </View>
-        <View style={{ ...css.items, marginTop: 20 }}>
-          <Button
-            title="Төлөлтийг мэдэгдэх"
+        <View style={{ ...css.items, marginTop: 50 }}>
+          <MyTouchableButton
             onPress={() => handleInformPayment(loan)}
-            color={primary_color}
+            title="Төлөх, Хаах"
           />
         </View>
       </ScrollView>
@@ -138,12 +147,11 @@ const css = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "semibold",
     shadowColor: "gray",
     color: primary_color,
-    marginLeft: 20,
   },
   items: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
 });

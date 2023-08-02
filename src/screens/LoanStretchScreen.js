@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import thoud from "thousand_separator_number";
+import { FontAwesome5 } from "@expo/vector-icons";
 import ScreenHeader from "../components/ScreenHeader";
 import MyLabel from "../components/MyLabel";
 import useParameter from "../hooks/useParameter";
@@ -15,6 +16,7 @@ import useLoan from "../hooks/useLoan";
 import useProduct from "../hooks/useProduct";
 import useUniqueID from "../hooks/useUniqueID";
 import Spinner from "../components/Spinner";
+import MyTouchableButton from "../components/MyTouchableButton";
 import { primary_color } from "../constants/colors";
 
 const LoanStretchScreen = (props) => {
@@ -81,12 +83,13 @@ const LoanStretchScreen = (props) => {
               төг
             </Text>
             <View>
-              <Button
-                title="Хуулах"
+              <FontAwesome5
+                name="copy"
+                size={24}
+                color={primary_color}
                 onPress={() =>
                   copyToClipboard((txnAmount * productDetail[0]?.fee) / 100)
                 }
-                color={primary_color}
               />
             </View>
           </View>
@@ -100,14 +103,15 @@ const LoanStretchScreen = (props) => {
               {parameters !== undefined && parameters[0].bank_account}
             </Text>
             <View>
-              <Button
-                title="Хуулах"
+              <FontAwesome5
+                name="copy"
+                size={24}
+                color={primary_color}
                 onPress={() =>
                   copyToClipboard(
                     parameters !== undefined && parameters[0].bank_account
                   )
                 }
-                color={primary_color}
               />
             </View>
           </View>
@@ -119,10 +123,11 @@ const LoanStretchScreen = (props) => {
           >
             <Text style={css.text}>Эдванс Кредит ББСБ</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard("Эдванс Кредит ББСБ")}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard("Эдванс Кредит ББСБ")}
               />
             </View>
           </View>
@@ -134,15 +139,16 @@ const LoanStretchScreen = (props) => {
           >
             <Text style={css.text}>{loan.unique}</Text>
             <View>
-              <Button
-                title="Хуулах"
-                onPress={() => copyToClipboard(loan.unique)}
+              <FontAwesome5
+                name="copy"
+                size={24}
                 color={primary_color}
+                onPress={() => copyToClipboard(loan.unique)}
               />
             </View>
           </View>
         </View>
-        <View style={{ marginTop: 5 }}>
+        <View style={{ marginTop: 25 }}>
           <Text style={{ textAlign: "center" }}>
             Та зөвхөн дээрх дугаарыг{" "}
             <Text style={{ color: "red", fontWeight: "700" }}>
@@ -151,14 +157,13 @@ const LoanStretchScreen = (props) => {
             дээрээ бичнэ үү!
           </Text>
         </View>
-        <View style={{ ...css.items, marginTop: 20 }}>
+        <View style={{ ...css.items, marginTop: 50 }}>
           {loading ? (
             <Spinner />
           ) : (
-            <Button
-              title="Хүсэлт илгээх"
+            <MyTouchableButton
               onPress={sendLoanStretchRequest}
-              color={primary_color}
+              title="Хүсэлт илгээх"
             />
           )}
         </View>
@@ -176,12 +181,10 @@ const css = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    fontWeight: "bold",
     shadowColor: "gray",
     color: primary_color,
-    marginLeft: 20,
   },
   items: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
 });

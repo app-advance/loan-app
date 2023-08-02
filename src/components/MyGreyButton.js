@@ -15,7 +15,8 @@ export default MyGreyButton;
 
 const css = StyleSheet.create({
   button: {
-    fontWeight: 700,
+    textDecorationLine: "underline",
+    fontSize: 15,
     color: "#666",
   },
 });
