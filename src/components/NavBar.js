@@ -2,31 +2,31 @@ import React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View, StyleSheet, Text, Image } from "react-native";
 import Spinner from "../components/Spinner";
+import { platform } from "../constants/platform";
 
 const NavBar = (props) => {
   return (
     <View style={css.header}>
       <View
         style={{
-          flex: 2,
+          flex: 14,
           paddingLeft: 10,
           height: "100%",
           flexDirection: "row",
+          alignItems: "center",
           gap: 5,
         }}
       >
         <Image
           source={require("../../assets/emptyProfile.png")}
-          style={{ width: 38, height: "100%", resizeMode: "contain" }}
-        />
-        <Text
           style={{
-            fontSize: 16,
+            width: 38,
             height: "100%",
-            verticalAlign: "middle",
-            color: "white",
+            resizeMode: "contain",
+            alignSelf: "center",
           }}
-        >
+        />
+        <Text style={platform === "ios" ? css.profileIos : css.profileAndroid}>
           {props.userDetail !== undefined ? (
             <View>
               <Text style={{ color: "white" }}>Сайн уу,</Text>
@@ -45,19 +45,14 @@ const NavBar = (props) => {
         style={{
           flex: 1,
           // backgroundColor: "blue",
-          paddingRight: 23,
+          marginRight: 23,
+          justifyContent: "center",
           height: "100%",
         }}
       >
         <FontAwesome5
           name="bars"
-          style={{
-            fontSize: 25,
-            height: "100%",
-            verticalAlign: "middle",
-            textAlign: "right",
-            color: "white",
-          }}
+          style={platform === "ios" ? css.barsIos : css.barsAndroid}
           onPress={() => props.setShowHamburgerMenu(!props.showHamburgerMenu)}
         />
       </View>
@@ -73,5 +68,33 @@ const css = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     alignItems: "center",
+  },
+  profileAndroid: {
+    fontSize: 16,
+    height: "100%",
+    verticalAlign: "middle",
+    color: "white",
+  },
+  profileIos: {
+    fontSize: 16,
+    height: "100%",
+    verticalAlign: "middle",
+    color: "white",
+    marginTop: 20,
+  },
+  barsAndroid: {
+    fontSize: 25,
+    height: "100%",
+    verticalAlign: "middle",
+    textAlign: "right",
+    color: "white",
+  },
+  barsIos: {
+    fontSize: 25,
+    height: "100%",
+    verticalAlign: "middle",
+    textAlign: "right",
+    color: "white",
+    marginTop: 20,
   },
 });

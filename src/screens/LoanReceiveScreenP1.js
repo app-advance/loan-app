@@ -8,6 +8,7 @@ import MyTouchableButton from "../components/MyTouchableButton";
 import useUniqueID from "../hooks/useUniqueID";
 import useParameter from "../hooks/useParameter";
 import { primary_color } from "../constants/colors";
+import { platform } from "../constants/platform";
 
 const LoanReceiveScreenP1 = (props) => {
   const product = props.route.params.product;
@@ -91,7 +92,7 @@ const LoanReceiveScreenP1 = (props) => {
             Зээл олгосноос хойш {product.duration} хоногийн дараа
           </Text>
         </View>
-        <View style={{ ...css.items, marginTop: 35 }}>
+        <View style={platform === "ios" ? css.itemsIos : css.itemsAndroid}>
           <MyTouchableButton
             navigation={props.navigation}
             onPress={handleLoanContinue}
@@ -133,5 +134,12 @@ const css = StyleSheet.create({
   },
   items: {
     marginBottom: 10,
+  },
+  itemsAndroid: {
+    marginVertical: 35,
+  },
+  itemsIos: {
+    marginTop: 35,
+    marginBottom: 150,
   },
 });

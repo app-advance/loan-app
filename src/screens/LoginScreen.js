@@ -134,9 +134,9 @@ export default LoginScreen = (props) => {
             value={isEnabled}
             onValueChange={toggleSwitch}
           />
-          <Text>Нэвтрэх нэр сануулах</Text>
+          <Text style={{ marginLeft: 7 }}>Нэвтрэх нэр сануулах</Text>
         </View>
-        <View style={{ width: "70%", alignSelf: "center", marginTop: 20 }}>
+        <View style={{ width: "70%", alignSelf: "center" }}>
           {loading ? (
             <Spinner />
           ) : (

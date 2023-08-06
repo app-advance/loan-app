@@ -1,7 +1,8 @@
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import thoud from "thousand_separator_number";
 import { primary_color, secondary_color } from "../constants/colors";
+import { platform } from "../constants/platform";
 
 const UserLoanCard = (props) => {
   const loan = props.loan;
@@ -148,23 +149,21 @@ const UserLoanCard = (props) => {
           <Text style={css.footerItemLeft} onPress={handleLoanPayment}>
             Зээл төлөх
           </Text>
+
           {loanDate?.remain_day > 7 ? (
-            <Text
-              style={{ ...css.footerItemRight, backgroundColor: "orange" }}
+            <TouchableOpacity
               onPress={handleLoanStretchment}
+              style={{ ...css.useraction, backgroundColor: "orange" }}
             >
-              Хугацаа сунгах
-            </Text>
+              <Text style={css.footerItemRight}>Хугацаа сунгах</Text>
+            </TouchableOpacity>
           ) : (
-            <Text
-              style={{
-                ...css.footerItemRight,
-                backgroundColor: secondary_color,
-              }}
+            <TouchableOpacity
+              style={{ ...css.useraction, backgroundColor: secondary_color }}
               onPress={handleLoanStretchment}
             >
-              Хугацаа сунгах
-            </Text>
+              <Text style={css.footerItemRight}>Хугацаа сунгах</Text>
+            </TouchableOpacity>
           )}
         </View>
       )}
@@ -183,7 +182,6 @@ const css = StyleSheet.create({
   },
   cardHeader: {
     paddingHorizontal: 30,
-    // paddingVertical: 10,
   },
   cardHeadFlex: {
     flexDirection: "row",
@@ -204,6 +202,7 @@ const css = StyleSheet.create({
     flexDirection: "row",
     height: 40,
     justifyContent: "flex-end",
+    alignItems: "center",
   },
   footerItemLeft: {
     textAlign: "center",
@@ -213,6 +212,7 @@ const css = StyleSheet.create({
     fontWeight: 700,
     paddingHorizontal: 10,
   },
+  useraction: { borderRadius: 50 },
   footerItemRight: {
     textAlign: "center",
     verticalAlign: "middle",
@@ -220,6 +220,6 @@ const css = StyleSheet.create({
     color: "white",
     fontWeight: 700,
     paddingHorizontal: 15,
-    borderRadius: 50,
+    paddingVertical: 7,
   },
 });

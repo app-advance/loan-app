@@ -113,8 +113,8 @@ const css = StyleSheet.create({
   loanlist: {
     backgroundColor: "white",
     height: "100%",
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     marginBottom: -16,
   },
   loanlistline: {

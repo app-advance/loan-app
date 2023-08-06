@@ -8,6 +8,7 @@ import useLoan from "../hooks/useLoan";
 import { useEmailSend } from "../hooks/useEmailSend";
 import Spinner from "../components/Spinner";
 import { primary_color } from "../constants/colors";
+import { platform } from "../constants/platform";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 const LoanReceiveScreenP2 = (props) => {
@@ -150,7 +151,7 @@ const LoanReceiveScreenP2 = (props) => {
             дээрээ бичнэ үү!
           </Text>
         </View>
-        <View style={{ ...css.items, marginTop: 35 }}>
+        <View style={platform === "ios" ? css.itemsIos : css.itemsAndroid}>
           {loading ? (
             <Spinner />
           ) : (
@@ -181,5 +182,12 @@ const css = StyleSheet.create({
   },
   items: {
     marginBottom: 10,
+  },
+  itemsAndroid: {
+    marginVertical: 35,
+  },
+  itemsIos: {
+    marginTop: 35,
+    marginBottom: 150,
   },
 });

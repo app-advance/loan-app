@@ -1,26 +1,49 @@
 import { View, TextInput, StyleSheet } from "react-native";
 import React from "react";
 import { FontAwesome, Feather, Fontisto } from "@expo/vector-icons";
+import { platform } from "../constants/platform";
 
 const MyInput = (props) => {
   return (
-    <View style={{ flexDirection: "row", alignItems: "center", gap: 0 }}>
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 0,
+      }}
+    >
       {props.name === "email" ||
       props.name === "register" ||
       props.name === "lastname" ||
       props.name === "firstname" ? (
-        <FontAwesome name="user-o" size={24} color="black" style={css.icon} />
+        <FontAwesome
+          name="user-o"
+          size={24}
+          color="black"
+          style={platform === "ios" ? css.iconIos : css.iconAndroid}
+        />
       ) : props.name === "password" ||
         props.name === "password1" ||
         props.name === "password2" ? (
-        <Feather name="lock" size={24} color="black" style={css.icon} />
+        <Feather
+          name="lock"
+          size={24}
+          color="black"
+          style={platform === "ios" ? css.iconIos : css.iconAndroid}
+        />
       ) : props.name === "mobile" ? (
-        <Fontisto name="mobile-alt" size={24} color="black" style={css.icon} />
+        <Fontisto
+          name="mobile-alt"
+          size={24}
+          color="black"
+          style={platform === "ios" ? css.iconIos : css.iconAndroid}
+        />
       ) : null}
       <TextInput
         name={props.name}
         placeholder={props.placeholder}
-        style={css.input}
+        placeholderTextColor="#888"
+        style={platform === "ios" ? css.inputIos : css.inputAndroid}
         autoCapitalize="none"
         autoCorrect={false}
         keyboardType={props.keyboardType}
@@ -36,7 +59,7 @@ const MyInput = (props) => {
 export default MyInput;
 
 const css = StyleSheet.create({
-  input: {
+  inputAndroid: {
     backgroundColor: "#ddd",
     paddingVertical: 13,
     paddingRight: 13,
@@ -45,7 +68,14 @@ const css = StyleSheet.create({
     borderBottomRightRadius: 15,
     flex: 12,
   },
-  icon: {
+  inputIos: {
+    backgroundColor: "#ddd",
+    paddingVertical: 13,
+    paddingRight: 13,
+    paddingLeft: 2,
+    flex: 12,
+  },
+  iconAndroid: {
     paddingVertical: 15,
     paddingLeft: 15,
     paddingRight: 13,
@@ -54,5 +84,13 @@ const css = StyleSheet.create({
     backgroundColor: "#ddd",
     borderTopLeftRadius: 15,
     borderBottomLeftRadius: 15,
+  },
+  iconIos: {
+    paddingVertical: 9,
+    paddingLeft: 15,
+    paddingRight: 13,
+    flex: 1,
+    color: "#aaa",
+    backgroundColor: "#ddd",
   },
 });

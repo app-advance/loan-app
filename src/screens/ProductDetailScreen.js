@@ -9,9 +9,11 @@ import {
 import React from "react";
 import thoud from "thousand_separator_number";
 import ScreenHeader from "../components/ScreenHeader";
+import MyTouchableButton from "../components/MyTouchableButton";
 import useParameter from "../hooks/useParameter";
 import MyLabel from "../components/MyLabel";
 import Spinner from "../components/Spinner";
+import { platform } from "../constants/platform";
 import { primary_color, secondary_color } from "../constants/colors";
 
 const ProductDetailScreen = (props) => {
@@ -45,10 +47,7 @@ const ProductDetailScreen = (props) => {
 
   return (
     <View>
-      <ScreenHeader
-        title="Бүтээгдэхүүний дэлгэрэнгүй"
-        navigation={props.navigation}
-      />
+      <ScreenHeader title="Дэлгэрэнгүй" navigation={props.navigation} />
       {product !== undefined ? (
         <ScrollView style={css.container}>
           <View style={css.items}>
@@ -96,11 +95,11 @@ const ProductDetailScreen = (props) => {
             <MyLabel label="Сунгах боломжит хугацаа" />
             <Text style={css.text}>{product.extension} хоног</Text>
           </View>
-          <View style={css.items}>
-            <Button
-              title="Зээл авах"
+          <View style={platform === "ios" ? css.itemsIos : css.itemsAndroid}>
+            <MyTouchableButton
+              navigation={props.navigation}
               onPress={handleLoanReceive}
-              color={primary_color}
+              title="Үргэлжлүүлэх"
             />
           </View>
         </ScrollView>
@@ -119,11 +118,20 @@ const css = StyleSheet.create({
     marginTop: 50,
   },
   text: {
-    paddingLeft: 20,
-    paddingTop: 10,
-    color: "#666",
+    fontSize: 20,
+    fontWeight: 500,
+    shadowColor: "gray",
+    textAlign: "left",
+    color: primary_color,
   },
   items: {
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+  itemsAndroid: {
+    marginVertical: 35,
+  },
+  itemsIos: {
+    marginTop: 35,
+    marginBottom: 150,
   },
 });
