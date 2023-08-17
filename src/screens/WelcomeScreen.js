@@ -5,7 +5,7 @@ import { primary_color } from "../constants/colors";
 export default WelcomeScreen = (props) => {
   setTimeout(() => {
     props.navigation.navigate("LoginScreen");
-  }, 500);
+  }, 1000);
 
   return (
     <View style={css.container}>
