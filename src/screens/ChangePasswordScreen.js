@@ -25,7 +25,7 @@ const ChangePassword = (props) => {
           setLoading(false);
           setPassword1(null);
           setPassword2(null);
-          Alert.alert("Нууц үг амжилттай солигдлоо. Амжилт хүсье.");
+          Alert.alert("Нууц үг амжилттай солигдлоо.");
         })
         .then(() => {
           props.navigation.pop();

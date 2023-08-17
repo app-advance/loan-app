@@ -21,7 +21,7 @@ export default HomeScreen = (props) => {
     signOut(auth)
       .then((result) => {
         // console.log(result);
-        Alert.alert("Системээс гарлаа. Амжилт хүсье.");
+        Alert.alert("Системээс гарлаа.");
       })
       .then(() => {
         setShowHamburgerMenu(false);
@@ -115,7 +115,7 @@ const css = StyleSheet.create({
     height: "100%",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    marginBottom: -16,
+    marginBottom: -22,
   },
   loanlistline: {
     marginTop: 10,

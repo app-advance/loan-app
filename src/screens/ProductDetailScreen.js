@@ -57,15 +57,13 @@ const ProductDetailScreen = (props) => {
           <View style={css.items}>
             <MyLabel label="Зээлийн хязгаар" />
             <Text style={css.text}>
-              {thoud(product.min_amount) + product.currency} -{" "}
-              {thoud(product.max_amount) + product.currency}
+              {thoud(product.min_amount)} - {thoud(product.max_amount)} төгрөг
             </Text>
           </View>
           <View style={css.items}>
             <MyLabel label="Авах боломжтой зээлийн хэмжээ" />
             <Text style={css.text}>
-              {thoud(product.loan_amount - userTotalLoanAmount) +
-                product.currency}
+              {thoud(product.loan_amount - userTotalLoanAmount)} төгрөг
             </Text>
           </View>
           <View style={css.items}>
@@ -79,7 +77,7 @@ const ProductDetailScreen = (props) => {
           <View style={css.items}>
             <MyLabel label="Зээлийн шимтгэл" />
             {/* <Text style={css.text}>{product.fee}%</Text> */}
-            <Text style={css.text}>100,000 төгрөг тутамд 5,000 төгрөг</Text>
+            <Text style={css.text}>100,000 тутамд 5,000 төгрөг</Text>
           </View>
           {/* <View style={css.items}>
             <MyLabel label="Өргөдлийн хураамж" />

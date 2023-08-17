@@ -47,7 +47,7 @@ const LoanReceiveScreenP1 = (props) => {
       <ScrollView style={css.container}>
         <View style={{ ...css.items, marginBottom: 50 }}>
           <MyLabel label="Зээлийн хэмжээ" />
-          <Text style={css.bigText}>{thoud(userLoanAmount)} төг</Text>
+          <Text style={css.bigText}>{thoud(userLoanAmount)} төгрөг</Text>
           <Slider
             style={{ marginTop: 15, height: 20 }}
             minimumValue={product.min_amount}
@@ -79,12 +79,12 @@ const LoanReceiveScreenP1 = (props) => {
         <View style={css.items}>
           <MyLabel label="Зээлийн хүү" />
           <Text style={css.text}>
-            {thoud(userLoanAmount * product.interest)} төг
+            {thoud(userLoanAmount * product.interest)} төгрөг
           </Text>
         </View>
         <View style={css.items}>
           <MyLabel label="Шимтгэл" />
-          <Text style={css.text}>{thoud(userLoanFee)} төг</Text>
+          <Text style={css.text}>{thoud(userLoanFee)} төгрөг</Text>
         </View>
         <View style={css.items}>
           <MyLabel label="Дуусах хугацаа" />

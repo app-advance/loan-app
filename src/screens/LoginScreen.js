@@ -36,7 +36,7 @@ export default LoginScreen = (props) => {
       signInWithEmailAndPassword(auth, email.trim(), password.trim())
         .then((result) => {
           // console.log("RESULT: ", result.user);
-          Alert.alert("Амжилттай нэвтэрлээ. Амжилт хүсье.");
+          Alert.alert("Амжилттай нэвтэрлээ.");
         })
         .then(() => {
           if (isEnabled) {
@@ -64,12 +64,10 @@ export default LoginScreen = (props) => {
           }
           setPassword(null);
           setLoading(false);
-          Alert.alert(
-            "Имэйл эсвэл нууц үг буруу байна. Дахин оролдоно уу. Амжилт хүсье."
-          );
+          Alert.alert("Имэйл эсвэл нууц үг буруу байна. Дахин оролдоно уу.");
         });
     } else {
-      Alert.alert("Имэйл эсвэл нууц үгээ оруулна уу. Амжилт хүсье.");
+      Alert.alert("Имэйл эсвэл нууц үгээ оруулна уу.");
     }
   };
 

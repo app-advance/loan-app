@@ -70,7 +70,7 @@ const LoanStretchScreen = (props) => {
         </Text>
         <View style={css.items}>
           <MyLabel label="Зээлийн хэмжээ" />
-          <Text style={css.text}>{thoud(txnAmount)} төг</Text>
+          <Text style={css.text}>{thoud(txnAmount)} төгрөг</Text>
         </View>
         <View style={css.items}>
           <MyLabel label="Шимтгэл | Гүйлгээний дүн" />
@@ -79,8 +79,8 @@ const LoanStretchScreen = (props) => {
           >
             <Text style={css.text}>
               {productDetail !== undefined &&
-                thoud((txnAmount * productDetail[0]?.fee) / 100)}
-              төг
+                thoud((txnAmount * productDetail[0]?.fee) / 100)}{" "}
+              төгрөг
             </Text>
             <View>
               <FontAwesome5

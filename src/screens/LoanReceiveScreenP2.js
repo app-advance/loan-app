@@ -75,7 +75,7 @@ const LoanReceiveScreenP2 = (props) => {
         <View style={{ ...css.items, marginBottom: 40 }}>
           <MyLabel label="Зээлийн хэмжээ" />
           <Text style={{ ...css.text, fontWeight: "bold" }}>
-            {thoud(loan.loan)} төг
+            {thoud(loan.loan)} төгрөг
           </Text>
         </View>
         <View style={css.items}>
@@ -83,7 +83,7 @@ const LoanReceiveScreenP2 = (props) => {
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <Text style={css.text}>{thoud(loan.fee)} төг</Text>
+            <Text style={css.text}>{thoud(loan.fee)} төгрөг</Text>
             <View>
               <FontAwesome5
                 name="copy"

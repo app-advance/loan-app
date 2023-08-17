@@ -53,7 +53,7 @@ const LoanPaymentSceen = (props) => {
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <Text style={css.text}>{thoud(txnAmount)} төг</Text>
+            <Text style={css.text}>{thoud(txnAmount)} төгрөг</Text>
             <View>
               <FontAwesome5
                 name="copy"
